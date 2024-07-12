@@ -11,46 +11,6 @@ FAT = 80 #grams
 CARBS = 300 #grams
 today = []
 
-# def input_demographics():
-#     name = input("What is your name? ").strip()
-#     age = input("What is your age? ").strip()
-#     sex = input("What is your sex?(M/F): ").lower().strip()
-#     weight = input("What is your weight?(lb): ").strip()
-#     goal_weight = input("What is your goal weight?(lb): ").strip()
-#     profile = d.Person(name, age, sex, weight, goal_weight)
-#
-#     return profile
-#
-# def get_goals(profile):
-#     print("""
-#     1. Gain weight
-#     2. Lose weight
-#     3. Maintain weight
-#     """)
-#     weight = profile['weight']
-#     maintain = weight*15
-#     goal = input("What is your goal? ").strip()
-#     while goal not in ['g', 'l', 'm']:
-#         goal = input("What is your goal? ").strip()
-#
-#     if goal == 'g':
-#         pounds = input("How many pounds do you want to gain a week?(0-2): ").strip()
-#         caloriesPerDay = maintain + (((float(pounds))/2)*1000)
-#     elif goal == 'l':
-#         pounds = input("How many pounds do you want to lose a week?(0-2): ").strip()
-#         caloriesPerDay = maintain - (((float(pounds)) / 2)*1000)
-#     elif goal == 'm':
-#         caloriesPerDay = maintain
-#
-#     with open("demographics.json", "a") as f:
-#         json.dump(caloriesPerDay, f)
-#         f.write("\n")
-#     return
-
-
-
-
-
 start = input_demographics()
 secrets = Person(start[0],start[1], start[2], start[3],start[4])
 secrets.write_demographics()
@@ -58,10 +18,7 @@ secrets.write_demographics()
 goals = get_goals(secrets.demographics)
 set_goals = Goals(goals[0], goals[1])
 set_goals.write_goals()
-
 print('Your goals have been saved')
-
-
 
 
 def main():
