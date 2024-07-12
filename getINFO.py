@@ -10,6 +10,7 @@ def input_demographics():
 
     return name, age, sex, weight, goal_weight
 
+
 def get_goals(profile):
     print("""
     1. Gain weight
@@ -17,19 +18,21 @@ def get_goals(profile):
     3. Maintain weight
     """)
     weight = profile['weight']
-    maintain = weight*15
+    maintain = weight * 15
+    pounds = float(0)
     goal = input("What is your goal? ").strip()
     while goal not in ['g', 'l', 'm']:
         goal = input("What is your goal? ").strip()
 
     if goal == 'g':
         pounds = input("How many pounds do you want to gain a week?(0-2): ").strip()
-        calories_per_day = maintain + (((float(pounds))/2)*1000)
+        calories_per_day = maintain + (((float(pounds)) / 2) * 1000)
+
     elif goal == 'l':
         pounds = input("How many pounds do you want to lose a week?(0-2): ").strip()
-        calories_per_day = maintain - (((float(pounds)) / 2)*1000)
+        calories_per_day = maintain - (((float(pounds)) / 2) * 1000)
+
     elif goal == 'm':
         calories_per_day = maintain
 
-
-    return goal, calories_per_day
+    return goal, calories_per_day, pounds

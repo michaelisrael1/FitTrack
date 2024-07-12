@@ -1,5 +1,5 @@
-import json
-from dataclasses import dataclass
+# import json
+# from dataclasses import dataclass
 import numpy as np
 import matplotlib.pyplot as plt
 from foods import *
@@ -16,10 +16,10 @@ secrets = Person(start[0],start[1], start[2], start[3],start[4])
 secrets.write_demographics()
 
 goals = get_goals(secrets.demographics)
-set_goals = Goals(goals[0], goals[1])
+set_goals = Goals(goals[0], goals[1], goals[2])
 set_goals.write_goals()
 print('Your goals have been saved')
-
+print(set_goals.time_to_reach_goal())
 
 def main():
     done = False
