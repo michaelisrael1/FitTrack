@@ -15,11 +15,14 @@ class Person:
         return f'Your profile has been saved!'
 
 class Goals(Person):
-    def __init__(self, goal_type, calories_per_day, pounds):
+    def __init__(self, goal_type, calories_per_day, pounds, protein_goal, carbs_goal, fat_goal):
         self.goals = {
             'goal_type': goal_type,
             'calories_per_day': float(calories_per_day),
-            'pounds': float(pounds)
+            'pounds': float(pounds),
+            'protein_goal': float(protein_goal),
+            'carbs_goal': float(carbs_goal),
+            'fat_goal': float(fat_goal)
         }
 
     def find_weight(self):

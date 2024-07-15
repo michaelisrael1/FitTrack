@@ -35,4 +35,8 @@ def get_goals(profile):
     elif goal == 'm':
         calories_per_day = maintain
 
-    return goal, calories_per_day, pounds
+    protein_goal = weight * 0.36
+    carbs_goal = calories_per_day * 0.55
+    fat_goal = calories_per_day * .25
+
+    return goal, calories_per_day, pounds, protein_goal, carbs_goal, fat_goal

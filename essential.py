@@ -1,5 +1,4 @@
 import json
-from datetime import date
 
 
 def add_food():
@@ -11,15 +10,22 @@ def add_food():
 
     return name, calories, protein, fat, carbs
 
-def get_date(date):
-    with open("food_data.json", 'r') as f:
+
+def data_at_date(date, file):
+    with open(file, 'r') as f:
         data = json.load(f)
     if date in data:
-        print(data[date])
-        return []
+        return data[date]
+    else:
+        return {}
 
-# def get_sum(name, date):
-#     food = get_date(name,date)
-#     total = sum(i[name] for i in food)
-#     return total
 
+def get_sum(name, date, file):
+    food = data_at_date(date, file)
+    total = sum(i[name] for i in food)
+    return total
+
+
+def get_goal(name, file):
+    goal = data_at_date(name, file)
+    return goal

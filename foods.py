@@ -38,13 +38,18 @@ class Food:
 
 
 class Totals:
-    def __init__(self, name, date):
+    TOTAL_FILE = "food_data.json"
+    GOAL_FILE = "demographics.json"
+
+    def __init__(self, name, date='None', type='None'):
         self.name = name
         self.date = date
+        self.type = type
 
-    def get_date(self):
-        total = get_date(self.date)
+    def get_sum(self):
+        if self.type == 'goal':
+            total = get_goal(self.name, self.GOAL_FILE)
+        elif self.type == 'total':
+            total = get_sum(self.name, self.date, self.TOTAL_FILE)
 
         return total
-
-
