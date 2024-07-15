@@ -2,6 +2,7 @@ from demographics import *
 
 
 def input_demographics():
+    """Takes demographic input from user and returns it in proper order for class"""
     name = input("What is your name? ").strip()
     age = input("What is your age? ").strip()
     sex = input("What is your sex?(M/F): ").lower().strip()
@@ -12,6 +13,7 @@ def input_demographics():
 
 
 def get_goals(profile):
+    """Finds the daily intake needs to reach the goal provided, and returns the numbers for input into a class"""
     print("""
     1. Gain weight
     2. Lose weight
