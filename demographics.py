@@ -14,6 +14,19 @@ class Person:
             json.dump(self.demographics, f)
         return f'Your profile has been saved!'
 
+    def update_weight(self):
+        new_weight = input('Please enter your new weight: ')
+        while new_weight is not int or float:
+            new_weight = input('Error enter a number: ')
+        self.demographics['weight'] = float(new_weight)
+        with open("demographics.json", "r") as f:
+            data = f
+        data['weight'] = new_weight
+        with open("demographics.json", "w") as f:
+            json.dump(data, f)
+
+
+
 class Goals(Person):
     def __init__(self, goal_type, calories_per_day, pounds, protein_goal, carbs_goal, fat_goal):
         self.goals = {
