@@ -1,12 +1,52 @@
 import json
+import main
+
+
+def menu():
+    print("""
+    (1) Add a new food
+    (2) Visualize progress
+    (3) Quit
+    (4) Update Weight
+    """)
+
+    choice = input("Enter your choice: ")
+    while choice not in ['1', '2', '3', '4']:
+        print("Invalid choice. Please try again.")
+        choice = input("Enter your choice: ")
+    return int(choice)
+
 
 def add_food():
     """Takes food input from user and returns it in proper order for class"""
     name = input("Input the name of the food: ")
-    calories = int(input("Input the calorie of the food: "))
-    protein = int(input("Input the protein of the food: "))
-    fat = int(input("Input the fat of the food: "))
-    carbs = int(input("Input the carbs of the food: "))
+    calories = None
+    protein = None
+    fat = None
+    carbs = None
+    while True:
+        try:
+            if calories == None or calories <= 0:
+                calories = int(input("Input the calorie of the food: "))
+                if calories <= 0:
+                    raise TypeError
+            if protein == None or protein <= 0:
+                protein = int(input("Input the protein of the food: "))
+                if protein <= 0:
+                    raise TypeError
+            if fat == None or fat <= 0:
+                fat = int(input("Input the fat of the food: "))
+                if fat <= 0:
+                    raise TypeError
+            if carbs == None or carbs <= 0:
+                carbs = int(input("Input the carbs of the food: "))
+                if carbs <= 0:
+                    raise TypeError
+            break
+        except ValueError:
+            print('Must enter a digits')
+        except TypeError:
+            print('Must enter a number greater than zero')
 
     return name, calories, protein, fat, carbs
 
@@ -32,3 +72,12 @@ def get_goal(name, file):
     """Gets daily goals from"""
     goal = data_at_date(name, file)
     return goal
+
+
+def get_growth_cal(today, yesterday):
+    today = data_at_date(today, "food_data.json")
+    yesterday = data_at_date(yesterday, "food_data.json")
+    today_list = [i['calories'] for i in today]
+    yesterday_list = [i['calories'] for i in yesterday]
+
+    return today_list, yesterday_list

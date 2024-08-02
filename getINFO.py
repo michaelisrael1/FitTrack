@@ -1,4 +1,5 @@
-from demographics import *
+import json
+import math
 
 
 def input_demographics():
@@ -41,4 +42,24 @@ def get_goals(profile):
     carbs_goal = calories_per_day * 0.55
     fat_goal = calories_per_day * .25
 
-    return goal, calories_per_day, pounds, protein_goal, carbs_goal, fat_goal
+    return goal, calories_per_day, pounds, protein_goal, carbs_goal, fat_goal, weight
+
+
+def update_weight():
+    new_weight = {}
+    done = False
+    while not done:
+        try:
+            new_weight['weight'] = float(input('Please enter your updated weight: '))
+            done = True
+        except ValueError:
+            print('Error only enter numbers ')
+    return get_goals(new_weight)
+
+
+def extract_info():
+    info = []
+    with open("demographics.json", 'r') as f:
+        data = json.load(f)
+        data = list(data.values())
+    return data

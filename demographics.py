@@ -1,4 +1,8 @@
 import json
+from getINFO import *
+from getINFO import update_weight
+
+
 class Person:
     def __init__(self, name, age, sex, weight, goal_weight):
         self.demographics = {
@@ -80,6 +84,25 @@ class Goals(Person):
 
             else:
                 return f'You reached your goal of {current_weight:.0f} pounds'
+
+    def update_weight(self):
+        with open("demographics.json", 'r') as f:
+            data = json.load(f)
+        new = update_weight()
+        data['goal'] = new[0]
+        data['calories_per_day'] = new[1]
+        data['pounds'] = new[2]
+        data['protein_goal'] = new[3]
+        data['carbs_goal'] = new[4]
+        data['fat_goal'] = new[5]
+        data['weight'] = new[6]
+        with open("demographics.json", 'w') as f:
+            json.dump(data, f)
+
+
+
+
+
 
 
 
