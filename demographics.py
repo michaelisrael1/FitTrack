@@ -89,7 +89,7 @@ class Goals(Person):
         with open("demographics.json", 'r') as f:
             data = json.load(f)
         new = update_weight()
-        data['goal'] = new[0]
+        data['goal_type'] = new[0]
         data['calories_per_day'] = new[1]
         data['pounds'] = new[2]
         data['protein_goal'] = new[3]
@@ -98,7 +98,7 @@ class Goals(Person):
         data['weight'] = new[6]
         with open("demographics.json", 'w') as f:
             json.dump(data, f)
-
+        return
 
 
 

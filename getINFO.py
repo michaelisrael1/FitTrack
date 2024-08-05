@@ -1,6 +1,6 @@
 import json
-import math
-
+from PyQt6.QtWidgets import *
+from gui import *
 
 def input_demographics():
     """Takes demographic input from user and returns it in proper order for class"""
