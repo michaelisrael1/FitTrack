@@ -30,7 +30,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
+    <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidgetFitTrack">
       <property name="enabled">
        <bool>true</bool>
@@ -57,7 +57,7 @@
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="stackedWidgetPageWelcome">
        <widget class="QLabel" name="label_welcome">
@@ -107,7 +107,7 @@
           <x>150</x>
           <y>60</y>
           <width>101</width>
-          <height>16</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -136,45 +136,11 @@
           <height>21</height>
          </rect>
         </property>
-       </widget>
-       <widget class="QLineEdit" name="input_age">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>100</y>
-          <width>171</width>
-          <height>21</height>
-         </rect>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
         </property>
-       </widget>
-       <widget class="QLineEdit" name="input_sex">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>140</y>
-          <width>171</width>
-          <height>21</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="input_currentWeight">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>180</y>
-          <width>171</width>
-          <height>21</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="input_goalWeight">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>220</y>
-          <width>171</width>
-          <height>21</height>
-         </rect>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_goalWeight">
@@ -213,7 +179,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Sex (m/f):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Sex:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QPushButton" name="button_submitINFO">
@@ -232,14 +198,91 @@
        <widget class="QLabel" name="labelErrorInfo">
         <property name="geometry">
          <rect>
-          <x>250</x>
+          <x>200</x>
           <y>290</y>
-          <width>181</width>
+          <width>251</width>
           <height>181</height>
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#aa0000;&quot;&gt;Error!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aa0000;&quot;&gt;Ex- Name: John&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aa0000;&quot;&gt;Age: 25&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aa0000;&quot;&gt;Sex: m&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aa0000;&quot;&gt;Current Weight: 180&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aa0000;&quot;&gt;Goal: 175&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#aa0000;&quot;&gt;Error!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Only enter in letters for name ex: 'John'&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="input_age">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>100</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButtonMale">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>140</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Male</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButtonFemale">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>140</y>
+          <width>82</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Female</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="input_currentWeight">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>180</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <double>50.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>350.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>50.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="input_goalWeight">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>220</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <double>50.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>350.000000000000000</double>
         </property>
        </widget>
       </widget>
@@ -388,7 +431,7 @@
           <x>0</x>
           <y>10</y>
           <width>681</width>
-          <height>21</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
@@ -408,7 +451,7 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Add a new food: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_VizualizeProgress">
+       <widget class="QLabel" name="label_ProfileInfo">
         <property name="geometry">
          <rect>
           <x>190</x>
@@ -418,7 +461,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Vizualize Progress:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Profile Information&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_Quit">
@@ -434,7 +477,7 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Quit:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_UpdateWeight">
+       <widget class="QLabel" name="label_FoodLog">
         <property name="geometry">
          <rect>
           <x>190</x>
@@ -444,7 +487,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Update Weight:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Food Log&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QRadioButton" name="radioButtonAddfood">
@@ -459,8 +502,11 @@
         <property name="text">
          <string/>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
-       <widget class="QRadioButton" name="radioButton_Visualize">
+       <widget class="QRadioButton" name="radioButton_ProfileInfo">
         <property name="geometry">
          <rect>
           <x>430</x>
@@ -473,7 +519,7 @@
          <string/>
         </property>
        </widget>
-       <widget class="QRadioButton" name="radioButton_UpdateWeight">
+       <widget class="QRadioButton" name="radioButton_FoodLog">
         <property name="geometry">
          <rect>
           <x>430</x>
@@ -503,7 +549,7 @@
         <property name="geometry">
          <rect>
           <x>280</x>
-          <y>360</y>
+          <y>350</y>
           <width>131</width>
           <height>51</height>
          </rect>
@@ -533,7 +579,7 @@
           <x>200</x>
           <y>110</y>
           <width>111</width>
-          <height>16</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -550,53 +596,13 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="input_calories">
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>150</y>
-          <width>113</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="input_protein">
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>190</y>
-          <width>113</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="input_fat">
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>230</y>
-          <width>113</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="input_carbs">
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>270</y>
-          <width>113</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_calories">
         <property name="geometry">
          <rect>
           <x>200</x>
           <y>150</y>
           <width>111</width>
-          <height>16</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -609,7 +615,7 @@
           <x>200</x>
           <y>190</y>
           <width>111</width>
-          <height>16</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -622,7 +628,7 @@
           <x>200</x>
           <y>230</y>
           <width>111</width>
-          <height>16</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -635,7 +641,7 @@
           <x>200</x>
           <y>270</y>
           <width>111</width>
-          <height>16</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -681,8 +687,229 @@
          <string>Main Menu</string>
         </property>
        </widget>
+       <widget class="QSpinBox" name="input_calories">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>150</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>5000</number>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="input_protein">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>190</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>700</number>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="input_fat">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>230</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximum">
+         <number>700</number>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="input_carbs">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>270</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximum">
+         <number>700</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_food_added">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>380</y>
+          <width>231</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#00aa00;&quot;&gt;New Food Added!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_error_food">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>380</y>
+          <width>231</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#aa0000;&quot;&gt;Error!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aa0000;&quot;&gt;Please enter only letters in food name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QWidget" name="page_Visualize"/>
+      <widget class="QWidget" name="page_ProfileInfo">
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>10</y>
+          <width>241</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Profile Information&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="table_porofile_info">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>100</y>
+          <width>661</width>
+          <height>271</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="autoScroll">
+         <bool>true</bool>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>1</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>580</number>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>30</number>
+        </attribute>
+        <row>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Age</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Sex</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Weight</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Goal Weight</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Calories</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Protien</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Fat</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Carbs</string>
+         </property>
+        </row>
+        <column/>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_FoodLog">
+       <widget class="QTextBrowser" name="text_food_log">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>50</y>
+          <width>541</width>
+          <height>411</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>0</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Food Log:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>

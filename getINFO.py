@@ -2,6 +2,7 @@ import json
 from PyQt6.QtWidgets import *
 from gui import *
 
+
 def input_demographics():
     """Takes demographic input from user and returns it in proper order for class"""
     name = input("What is your name? ").strip()
@@ -13,27 +14,16 @@ def input_demographics():
     return name, age, sex, weight, goal_weight
 
 
-def get_goals(profile):
+def get_goals(goal, pounds_week=0):
     """Finds the daily intake needs to reach the goal provided, and returns the numbers for input into a class"""
-    print("""
-    1. Gain weight
-    2. Lose weight
-    3. Maintain weight
-    """)
-    weight = profile['weight']
+    weight = get_weight()
     maintain = weight * 15
-    pounds = float(0)
-    goal = input("What is your goal? ").strip()
-    while goal not in ['g', 'l', 'm']:
-        goal = input("What is your goal? ").strip()
 
     if goal == 'g':
-        pounds = input("How many pounds do you want to gain a week?(0-2): ").strip()
-        calories_per_day = maintain + (((float(pounds)) / 2) * 1000)
+        calories_per_day = maintain + (((float(pounds_week)) / 2) * 1000)
 
     elif goal == 'l':
-        pounds = input("How many pounds do you want to lose a week?(0-2): ").strip()
-        calories_per_day = maintain - (((float(pounds)) / 2) * 1000)
+        calories_per_day = maintain - (((float(pounds_week)) / 2) * 1000)
 
     elif goal == 'm':
         calories_per_day = maintain
@@ -42,7 +32,7 @@ def get_goals(profile):
     carbs_goal = calories_per_day * 0.55
     fat_goal = calories_per_day * .25
 
-    return goal, calories_per_day, pounds, protein_goal, carbs_goal, fat_goal, weight
+    return goal, calories_per_day, pounds_week, protein_goal, carbs_goal, fat_goal, weight
 
 
 def update_weight():
@@ -63,3 +53,10 @@ def extract_info():
         data = json.load(f)
         data = list(data.values())
     return data
+
+
+def get_weight():
+    with open('demographics.json', 'r') as f:
+        data = json.load(f)
+        weight = data['weight']
+    return weight

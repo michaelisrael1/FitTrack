@@ -29,9 +29,12 @@ class Person:
         with open("demographics.json", "w") as f:
             json.dump(data, f)
 
+    @property
+    def display_person_info(self):
+        return self.demographics[0], self.demographics[1], self.demographics[2], self.demographics[3], self.demographics[4]
 
 
-class Goals(Person):
+class Goals:
     def __init__(self, goal_type, calories_per_day, pounds, protein_goal, carbs_goal, fat_goal):
         self.goals = {
             'goal_type': goal_type,
@@ -70,7 +73,7 @@ class Goals(Person):
 
             if current_weight > goal_weight and self.goals['goal_type'] == 'l':
                 lose_amount = current_weight - goal_weight
-                time_to_reach_goal = lose_amount/pound_week
+                time_to_reach_goal = lose_amount / pound_week
                 days = time_to_reach_goal * 7
 
                 return f'You will reach your goal in {days:.0f} days'
@@ -100,15 +103,6 @@ class Goals(Person):
             json.dump(data, f)
         return
 
-
-
-
-
-
-
-
-
-
-
-
-
+    @property
+    def display_goals_info(self):
+        return self.goals[0], self.goals[1], self.goals[2], self.goals[3], self.goals[4], self.goals[5]
