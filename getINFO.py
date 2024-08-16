@@ -19,13 +19,13 @@ def get_goals(goal, pounds_week=0):
     weight = get_weight()
     maintain = weight * 15
 
-    if goal == 'g':
+    if goal == 'gain':
         calories_per_day = maintain + (((float(pounds_week)) / 2) * 1000)
 
-    elif goal == 'l':
+    elif goal == 'lose':
         calories_per_day = maintain - (((float(pounds_week)) / 2) * 1000)
 
-    elif goal == 'm':
+    elif goal == 'maintain':
         calories_per_day = maintain
 
     protein_goal = weight * 0.36

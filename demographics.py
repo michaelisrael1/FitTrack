@@ -31,7 +31,7 @@ class Person:
 
     @property
     def display_person_info(self):
-        return self.demographics[0], self.demographics[1], self.demographics[2], self.demographics[3], self.demographics[4]
+        return self.demographics['name'], self.demographics['age'], self.demographics['sex'], self.demographics['weight'], self.demographics['goal_weight']
 
 
 class Goals:
@@ -64,21 +64,21 @@ class Goals:
         return f'Your goals have been saved!'
 
     def time_to_reach_goal(self):
-        if self.goals['goal_type'] == 'm':
+        if self.goals['goal_type'] == 'maintain':
             return 'We will be with you along the way to make sure you maintain your weight'
         else:
             current_weight = self.find_weight()[0]
             goal_weight = self.find_weight()[1]
             pound_week = self.goals['pounds']
 
-            if current_weight > goal_weight and self.goals['goal_type'] == 'l':
+            if current_weight > goal_weight and self.goals['goal_type'] == 'lose':
                 lose_amount = current_weight - goal_weight
                 time_to_reach_goal = lose_amount / pound_week
                 days = time_to_reach_goal * 7
 
                 return f'You will reach your goal in {days:.0f} days'
 
-            elif current_weight < goal_weight and self.goals['goal_type'] == 'g':
+            elif current_weight < goal_weight and self.goals['goal_type'] == 'gain':
                 gain_amount = goal_weight - current_weight
                 time_to_reach_goal = gain_amount / pound_week
                 days = time_to_reach_goal * 7
@@ -105,4 +105,4 @@ class Goals:
 
     @property
     def display_goals_info(self):
-        return self.goals[0], self.goals[1], self.goals[2], self.goals[3], self.goals[4], self.goals[5]
+        return self.goals['goal_type'], self.goals['calories_per_day'], self.goals['pounds'], self.goals['protein_goal'], self.goals['fat_goal'], self.goals['carbs_goal']
