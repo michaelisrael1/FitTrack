@@ -31,7 +31,8 @@ class Person:
 
     @property
     def display_person_info(self):
-        return self.demographics['name'], self.demographics['age'], self.demographics['sex'], self.demographics['weight'], self.demographics['goal_weight']
+        return self.demographics['name'], self.demographics['age'], self.demographics['sex'], self.demographics[
+            'weight'], self.demographics['goal_weight']
 
 
 class Goals:
@@ -105,4 +106,5 @@ class Goals:
 
     @property
     def display_goals_info(self):
-        return self.goals['goal_type'], self.goals['calories_per_day'], self.goals['pounds'], self.goals['protein_goal'], self.goals['fat_goal'], self.goals['carbs_goal']
+        return self.goals['goal_type'], self.goals['calories_per_day'], self.goals['pounds'], self.goals[
+            'protein_goal'], self.goals['fat_goal'], self.goals['carbs_goal']

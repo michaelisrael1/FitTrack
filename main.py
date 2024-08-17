@@ -32,7 +32,6 @@ def main():
         user_demo = Person(user[0], user[1], user[2], user[3], user[4])
         user_goal = Goals(user[5], user[6], user[7], user[8], user[9], user[10])
 
-
     calorie_goal = Totals(name='calories_per_day', type='goal')
     protein_goal = Totals(name='protein_goal', type='goal')
     fat_goal = Totals(name='fat_goal', type='goal')
@@ -60,7 +59,6 @@ def main():
                 fat_total = Totals('fat', date=today, type='total')
                 carb_total = Totals('carbs', date=today, type='total')
 
-                today_growth, yesterday_growth = calorie_total.growth_day(yesterday)
                 calorie_total = calorie_total.get_sum()
                 protein_total = protein_total.get_sum()
                 fat_total = fat_total.get_sum()

@@ -73,8 +73,6 @@ def food_log_data(date):
 
     return formatted_list
 
-print(food_log_data("2024-08-15"))
-
 
 def get_sum(name, date, file):
     """Gets sum of numbers stored in json"""
@@ -89,10 +87,9 @@ def get_goal(name, file):
     return goal
 
 
-def get_growth_cal(today, yesterday):
-    today = data_at_date(today, "food_data.json")
-    yesterday = data_at_date(yesterday, "food_data.json")
-    today_list = [i['calories'] for i in today]
-    yesterday_list = [i['calories'] for i in yesterday]
-
-    return today_list, yesterday_list
+def get_remaining(goal, current):
+    if goal - current <= 0:
+        remaining = 0
+    else:
+        remaining = goal - current
+    return remaining

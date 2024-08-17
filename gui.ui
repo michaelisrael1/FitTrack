@@ -48,7 +48,7 @@
        </size>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <property name="inputMethodHints">
        <set>Qt::ImhNone</set>
@@ -57,7 +57,7 @@
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="stackedWidgetPageWelcome">
        <widget class="QLabel" name="label_welcome">
@@ -98,7 +98,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Enter your information to get started:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Enter your information to get started:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_Name">
@@ -198,14 +198,14 @@
        <widget class="QLabel" name="labelErrorInfo">
         <property name="geometry">
          <rect>
-          <x>200</x>
+          <x>180</x>
           <y>290</y>
-          <width>251</width>
-          <height>181</height>
+          <width>301</width>
+          <height>111</height>
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#aa0000;&quot;&gt;Error!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Only enter in letters for name ex: 'John'&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#aa0000;&quot;&gt;Error!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Only Enter Letters in &lt;span style=&quot; font-weight:600;&quot;&gt;First&lt;/span&gt; Name | Ex: 'John'&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="input_age">
@@ -285,6 +285,19 @@
          <double>350.000000000000000</double>
         </property>
        </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>400</y>
+          <width>501</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#fc0107;&quot;&gt;If You are Maintaing Weight (Weight = Goal Weight)&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#fc0107;&quot;&gt;Software will Restart Once Submitted to Setup Your Main Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="page_GetGoals">
        <widget class="QLabel" name="labelGOALS">
@@ -292,84 +305,19 @@
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>251</width>
+          <width>641</width>
           <height>21</height>
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;GOALS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_goalradio">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>50</y>
-          <width>681</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;What is your goal?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="radioButtonGain">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>120</y>
-          <width>82</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Gain Weight</string>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="radioButtonLose">
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>120</y>
-          <width>82</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Lose Weight</string>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="radioButtonMaintain">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>120</y>
-          <width>131</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Maintain Weight</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="buttonSubmitGoalType">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>170</y>
-          <width>171</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Submit</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;Weekly Change:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QGroupBox" name="group_pounds_week">
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>260</y>
+          <y>130</y>
           <width>591</width>
           <height>181</height>
          </rect>
@@ -422,6 +370,19 @@
           <string>Submit</string>
          </property>
         </widget>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>390</y>
+          <width>501</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#fc0107;&quot;&gt;Software will Restart Once Submitted to Setup Your Main Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="page_MainMenu">
@@ -967,6 +928,61 @@
          <string>Main Menu</string>
         </property>
        </widget>
+       <widget class="QGroupBox" name="group_update_weight">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>310</y>
+          <width>141</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QDoubleSpinBox" name="input_update_weight">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>101</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <double>50.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>350.000000000000000</double>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="button_update_weight">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>121</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Update Weight</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_congrats">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>240</y>
+          <width>211</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; color:#21ff06;&quot;&gt;Congratulations!!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="page_FoodLog">
        <widget class="QLabel" name="label_2">
@@ -979,7 +995,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Food Log:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Food Log:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QPushButton" name="button_foodlog_MainMenu">
@@ -995,14 +1011,20 @@
          <string>Main Menu</string>
         </property>
        </widget>
-       <widget class="QListView" name="list_food_log">
+       <widget class="QListWidget" name="list_food_log">
         <property name="geometry">
          <rect>
-          <x>90</x>
-          <y>100</y>
-          <width>451</width>
-          <height>291</height>
+          <x>50</x>
+          <y>80</y>
+          <width>531</width>
+          <height>341</height>
          </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
        </widget>
       </widget>

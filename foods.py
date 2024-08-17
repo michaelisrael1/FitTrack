@@ -59,5 +59,3 @@ class Totals:
         results = get_growth_cal(today, yesterday)
 
         return results
-
-

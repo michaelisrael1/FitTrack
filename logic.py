@@ -1,14 +1,11 @@
-import logging
-import json
-from PyQt6.QtWidgets import *
-from gui import *
+import sys
+from datetime import date, timedelta
+import time
+
 from demographics import *
-import numpy as np
-import matplotlib.pyplot as plt
+from essential import *
 from foods import *
 from getINFO import *
-from essential import *
-from datetime import date, timedelta
 
 today = date.today()
 yesterday = date.today() - timedelta(1)
@@ -17,6 +14,8 @@ yesterday = yesterday.strftime('%Y-%m-%d')
 
 
 class Logic(QMainWindow, Ui_MainWindow):
+    FOOD_LOG_COUNT = 0
+    NEW_FOOD_ADDED = 0
     GOAL_TYPE = 'lose'
     user = None
     user_goal = None
@@ -28,6 +27,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.group_pounds_week.hide()
         self.label_error_food.hide()
         self.label_food_added.hide()
+        self.group_update_weight.hide()
+        self.label_congrats.hide()
 
         self.input_line = QLineEdit()
 
@@ -36,7 +37,6 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.buttonBegin.clicked.connect(lambda: self.check_data())
         self.button_submitINFO.clicked.connect(lambda: self.set_demo())
 
-        self.buttonSubmitGoalType.clicked.connect(lambda: self.set_goal_type())
         self.buttonSubmitGoalPoundsaWeek.clicked.connect(lambda: self.set_pounds())
 
         self.button_MainMenu.clicked.connect(lambda: self.main_menu())
@@ -46,6 +46,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.button_returnMainAddFood.clicked.connect(lambda: self.return_main_menu())
 
         self.button_profileMainMenu.clicked.connect(lambda: self.return_main_menu())
+        self.button_update_weight.clicked.connect(lambda: self.update_weight())
 
         self.button_foodlog_MainMenu.clicked.connect(lambda: self.return_main_menu())
 
@@ -80,23 +81,27 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.user = Person(name, age, sex, current_weight, goal_weight)
             self.user.write_demographics()
             self.stackedWidgetFitTrack.setCurrentWidget(self.page_GetGoals)
+            self.set_goal_type()
 
     def set_goal_type(self):
-        if self.radioButtonMaintain.isChecked():
+        if self.user.demographics['weight'] < self.user.demographics['goal_weight']:
+            self.group_pounds_week.show()
+            self.GOAL_TYPE = 'gain'
+        elif self.user.demographics['weight'] > self.user.demographics['goal_weight']:
+            self.group_pounds_week.show()
+        elif self.user.demographics['weight'] == self.user.demographics['goal_weight']:
             goals = get_goals('maintain')
             set_goals = Goals(goals[0], goals[1], goals[2], goals[3], goals[4], goals[5])
             set_goals.write_goals()
             self.stackedWidgetFitTrack.setCurrentWidget(self.page_MainMenu)
-        else:
-            self.group_pounds_week.show()
-            if self.radioButtonGain.isChecked():
-                self.GOAL_TYPE = 'gain'
+            os.execl(sys.executable, sys.executable, *sys.argv)
 
     def set_pounds(self):
         goals = get_goals(self.GOAL_TYPE, self.input_pounds_a_week.value())
         self.user_goal = Goals(goals[0], goals[1], goals[2], goals[3], goals[4], goals[5])
         self.user_goal.write_goals()
         self.stackedWidgetFitTrack.setCurrentWidget(self.page_MainMenu)
+        os.execl(sys.executable, sys.executable, *sys.argv)
 
     def main_menu(self):
         if self.radioButtonAddfood.isChecked():
@@ -104,6 +109,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         elif self.radioButton_ProfileInfo.isChecked():
             self.stackedWidgetFitTrack.setCurrentWidget(self.page_ProfileInfo)
             self.profile_info()
+            if self.user_goal.goals['goal_type'] != 'maintain':
+                self.group_update_weight.show()
         elif self.radioButton_FoodLog.isChecked():
             self.stackedWidgetFitTrack.setCurrentWidget(self.page_FoodLog)
             self.food_log()
@@ -125,6 +132,7 @@ class Logic(QMainWindow, Ui_MainWindow):
 
             new_food = Food(today, name_food, calories, protein, fat, carbs)
             new_food.WriteFood()
+            self.NEW_FOOD_ADDED += 1
             self.clear_food()
             self.label_food_added.show()
 
@@ -159,11 +167,59 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.table_porofile_info.setItem(9, 0, QTableWidgetItem(str(goal_info[4])))
         self.table_porofile_info.setItem(10, 0, QTableWidgetItem(str(goal_info[5])))
 
+    def update_weight(self):
+        if self.input_update_weight.value() >= self.user.demographics['goal_weight'] and self.user_goal.goals['goal_type'] == 'gain' or self.input_update_weight.value() <= self.user.demographics['goal_weight'] and self.user_goal.goals['goal_type'] == 'lose' :
+            self.label_congrats.show()
+            time.sleep(5)
+
+
+
+
+
     def food_log(self):
         try:
+            if self.FOOD_LOG_COUNT == 0:
+                self.food_log_data()
+                self.FOOD_LOG_COUNT += 1
+            elif self.NEW_FOOD_ADDED > 0:
+                self.food_log_data()
+        except KeyError:
+            self.list_food_log.addItem('No food logs for today. Add a food to get started!')
+
+    def food_log_data(self):
+        try:
+            self.list_food_log.clear()
             daily_log = food_log_data(today)
             for item in daily_log:
-                self.list_food_log.addItems(item)
+                self.list_food_log.addItem(item)
+            self.totals()
+        except FileNotFoundError:
+            raise KeyError
 
+    def totals(self):
+        calorie_goal = Totals(name='calories_per_day', type='goal')
+        protein_goal = Totals(name='protein_goal', type='goal')
+        fat_goal = Totals(name='fat_goal', type='goal')
+        carbs_goal = Totals(name='carbs_goal', type='goal')
 
+        calorie_goal = calorie_goal.get_sum()
+        protein_goal = protein_goal.get_sum()
+        fat_goal = fat_goal.get_sum()
+        carbs_goal = carbs_goal.get_sum()
 
+        calorie_total = Totals('calories', date=today, type='total')
+        protein_total = Totals('protein', date=today, type='total')
+        fat_total = Totals('fat', date=today, type='total')
+        carb_total = Totals('carbs', date=today, type='total')
+
+        calorie_total = calorie_total.get_sum()
+        protein_total = protein_total.get_sum()
+        fat_total = fat_total.get_sum()
+        carb_total = carb_total.get_sum()
+
+        self.list_food_log.addItems(
+            [
+                f'Calories Total = {calorie_total}  |  Calories Remaining = {get_remaining(calorie_goal, calorie_total):.2f}',
+                f'Protein Total = {protein_total}  |  Protein Remaining = {get_remaining(protein_goal, protein_total):.2f}',
+                f'Fat Total = {fat_total}  |  Fat Remaining = {get_remaining(fat_goal, fat_total):.2f}',
+                f'Carbs Total = {carb_total}  |  Carbs Remaining = {get_remaining(carbs_goal, carb_total):.2f}'])
