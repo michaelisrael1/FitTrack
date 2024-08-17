@@ -20,7 +20,7 @@ class Food:
         ]}
         self.no_date = {'name': name, "calories": calories, 'protein': protein, 'fat': fat, 'carbs': carbs}
 
-    def WriteFood(self):
+    def write_food(self):
         if "food_data.json" not in os.listdir():
             with open("food_data.json", 'w') as f:
                 json.dump(self.data, f, indent=4)
@@ -53,9 +53,3 @@ class Totals:
             total = get_sum(self.name, self.date, self.TOTAL_FILE)
 
         return total
-
-    def growth_day(self, yesterday):
-        today = self.date
-        results = get_growth_cal(today, yesterday)
-
-        return results

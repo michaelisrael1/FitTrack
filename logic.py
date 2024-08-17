@@ -1,9 +1,8 @@
 import sys
 from datetime import date, timedelta
-import time
+
 
 from demographics import *
-from essential import *
 from foods import *
 from getINFO import *
 
@@ -131,7 +130,7 @@ class Logic(QMainWindow, Ui_MainWindow):
                 self.input_protein.value()), float(self.input_fat.value()), float(self.input_carbs.value())
 
             new_food = Food(today, name_food, calories, protein, fat, carbs)
-            new_food.WriteFood()
+            new_food.write_food()
             self.NEW_FOOD_ADDED += 1
             self.clear_food()
             self.label_food_added.show()
@@ -168,13 +167,22 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.table_porofile_info.setItem(10, 0, QTableWidgetItem(str(goal_info[5])))
 
     def update_weight(self):
-        if self.input_update_weight.value() >= self.user.demographics['goal_weight'] and self.user_goal.goals['goal_type'] == 'gain' or self.input_update_weight.value() <= self.user.demographics['goal_weight'] and self.user_goal.goals['goal_type'] == 'lose' :
+        new_weight = self.input_update_weight.value()
+        self.user.update_weight(new_weight)
+        self.user.write_demographics()
+        self.profile_info()
+
+        if (new_weight >= self.user.demographics['goal_weight'] and self.user_goal.goals['goal_type'] == 'gain') or \
+                (new_weight <= self.user.demographics['goal_weight'] and self.user_goal.goals['goal_type'] == 'lose'):
             self.label_congrats.show()
-            time.sleep(5)
+            self.user_goal.update_goals('maintain')
+        else:
+            self.label_congrats.hide()
+            self.user_goal.update_goals(self.user_goal.goals['goal_type'])
 
-
-
-
+        self.user_goal.write_goals()
+        self.food_log()
+        self.profile_info()
 
     def food_log(self):
         try:
@@ -207,10 +215,10 @@ class Logic(QMainWindow, Ui_MainWindow):
         fat_goal = fat_goal.get_sum()
         carbs_goal = carbs_goal.get_sum()
 
-        calorie_total = Totals('calories', date=today, type='total')
-        protein_total = Totals('protein', date=today, type='total')
-        fat_total = Totals('fat', date=today, type='total')
-        carb_total = Totals('carbs', date=today, type='total')
+        calorie_total = Totals('calories', today, type='total')
+        protein_total = Totals('protein', today, type='total')
+        fat_total = Totals('fat', today, type='total')
+        carb_total = Totals('carbs', today, type='total')
 
         calorie_total = calorie_total.get_sum()
         protein_total = protein_total.get_sum()

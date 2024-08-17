@@ -57,7 +57,7 @@
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="stackedWidgetPageWelcome">
        <widget class="QLabel" name="label_welcome">
@@ -94,8 +94,14 @@
           <x>0</x>
           <y>0</y>
           <width>651</width>
-          <height>21</height>
+          <height>31</height>
          </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Enter your information to get started:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -199,7 +205,7 @@
         <property name="geometry">
          <rect>
           <x>180</x>
-          <y>290</y>
+          <y>280</y>
           <width>301</width>
           <height>111</height>
          </rect>
@@ -288,14 +294,14 @@
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>90</x>
-          <y>400</y>
-          <width>501</width>
-          <height>51</height>
+          <x>50</x>
+          <y>380</y>
+          <width>581</width>
+          <height>81</height>
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#fc0107;&quot;&gt;If You are Maintaing Weight (Weight = Goal Weight)&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#fc0107;&quot;&gt;Software will Restart Once Submitted to Setup Your Main Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#fc0107;&quot;&gt;If You are Maintaing Weight (Weight = Goal Weight)&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#fc0107;&quot;&gt;Software will Restart Once Submitted to Setup Your Main Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -306,7 +312,7 @@
           <x>10</x>
           <y>10</y>
           <width>641</width>
-          <height>21</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
@@ -335,7 +341,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;How many pounds do you want to lose/gain a week? :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;How many pounds do you want to lose/gain a week? :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="input_pounds_a_week">
@@ -374,14 +380,14 @@
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>30</x>
           <y>390</y>
-          <width>501</width>
-          <height>21</height>
+          <width>621</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#fc0107;&quot;&gt;Software will Restart Once Submitted to Setup Your Main Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#fc0107;&quot;&gt;Software will Restart Once Submitted to Setup Your Main Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -743,7 +749,7 @@
           <x>30</x>
           <y>10</y>
           <width>621</width>
-          <height>21</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
@@ -973,14 +979,14 @@
        <widget class="QLabel" name="label_congrats">
         <property name="geometry">
          <rect>
-          <x>470</x>
-          <y>240</y>
-          <width>211</width>
-          <height>31</height>
+          <x>430</x>
+          <y>250</y>
+          <width>281</width>
+          <height>51</height>
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; color:#21ff06;&quot;&gt;Congratulations!!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#21ff06;&quot;&gt;Congratulations!!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -988,10 +994,10 @@
        <widget class="QLabel" name="label_2">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>240</x>
           <y>30</y>
-          <width>171</width>
-          <height>31</height>
+          <width>201</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
@@ -1014,8 +1020,8 @@
        <widget class="QListWidget" name="list_food_log">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>80</y>
+          <x>80</x>
+          <y>100</y>
           <width>531</width>
           <height>341</height>
          </rect>

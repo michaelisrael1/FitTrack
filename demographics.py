@@ -1,6 +1,5 @@
 import json
 from getINFO import *
-from getINFO import update_weight
 
 
 class Person:
@@ -16,23 +15,24 @@ class Person:
     def write_demographics(self):
         with open("demographics.json", "w") as f:
             json.dump(self.demographics, f)
-        return f'Your profile has been saved!'
 
-    def update_weight(self):
-        new_weight = input('Please enter your new weight: ')
-        while new_weight is not int or float:
-            new_weight = input('Error enter a number: ')
-        self.demographics['weight'] = float(new_weight)
-        with open("demographics.json", "r") as f:
-            data = f
-        data['weight'] = new_weight
-        with open("demographics.json", "w") as f:
-            json.dump(data, f)
+    def update_weight(self, new_weight):
+        self.demographics['weight'] = new_weight
 
     @property
     def display_person_info(self):
         return self.demographics['name'], self.demographics['age'], self.demographics['sex'], self.demographics[
             'weight'], self.demographics['goal_weight']
+
+
+def find_weight():
+    with open('demographics.json', 'r') as f:
+        data = f.read()
+        parse_data = json.loads(data)
+    weight = parse_data['weight']
+    goal_weight = parse_data['goal_weight']
+
+    return weight, goal_weight
 
 
 class Goals:
@@ -46,15 +46,6 @@ class Goals:
             'fat_goal': float(fat_goal)
         }
 
-    def find_weight(self):
-        with open('demographics.json', 'r') as f:
-            data = f.read()
-            parse_data = json.loads(data)
-        weight = parse_data['weight']
-        goal_weight = parse_data['goal_weight']
-
-        return weight, goal_weight
-
     def write_goals(self):
         with open("demographics.json", "r") as f:
             goals = json.load(f)
@@ -64,45 +55,19 @@ class Goals:
 
         return f'Your goals have been saved!'
 
-    def time_to_reach_goal(self):
-        if self.goals['goal_type'] == 'maintain':
-            return 'We will be with you along the way to make sure you maintain your weight'
+    def update_goals(self, goal_type):
+        if goal_type == 'maintain':
+            goals = get_goals('maintain')
         else:
-            current_weight = self.find_weight()[0]
-            goal_weight = self.find_weight()[1]
-            pound_week = self.goals['pounds']
+            goals = get_goals(goal_type, self.goals['pounds'])
 
-            if current_weight > goal_weight and self.goals['goal_type'] == 'lose':
-                lose_amount = current_weight - goal_weight
-                time_to_reach_goal = lose_amount / pound_week
-                days = time_to_reach_goal * 7
-
-                return f'You will reach your goal in {days:.0f} days'
-
-            elif current_weight < goal_weight and self.goals['goal_type'] == 'gain':
-                gain_amount = goal_weight - current_weight
-                time_to_reach_goal = gain_amount / pound_week
-                days = time_to_reach_goal * 7
-
-                return f'You will reach your goal in {days:.0f} days'
-
-            else:
-                return f'You reached your goal of {current_weight:.0f} pounds'
-
-    def update_weight(self):
-        with open("demographics.json", 'r') as f:
-            data = json.load(f)
-        new = update_weight()
-        data['goal_type'] = new[0]
-        data['calories_per_day'] = new[1]
-        data['pounds'] = new[2]
-        data['protein_goal'] = new[3]
-        data['carbs_goal'] = new[4]
-        data['fat_goal'] = new[5]
-        data['weight'] = new[6]
-        with open("demographics.json", 'w') as f:
-            json.dump(data, f)
-        return
+        self.goals['goal_type'] = goals[0]
+        self.goals['calories_per_day'] = goals[1]
+        self.goals['pounds'] = goals[2]
+        self.goals['protein_goal'] = goals[3]
+        self.goals['carbs_goal'] = goals[4]
+        self.goals['fat_goal'] = goals[5]
+        self.write_goals()
 
     @property
     def display_goals_info(self):
